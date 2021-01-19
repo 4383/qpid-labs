@@ -1,0 +1,6 @@
+[submodule "qpid/qpid-dispatch"]
+	path = qpid/qpid-dispatch
+	url = https://github.com/apache/qpid-dispatch/
+[submodule "qpid/qpid-proton"]
+	path = qpid/qpid-proton
+	url = https://github.com/apache/qpid-proton
