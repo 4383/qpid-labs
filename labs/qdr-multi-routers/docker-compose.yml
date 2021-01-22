@@ -1,0 +1,28 @@
+# Basic example to learn to route message in a simple network topology
+# One hub and two standard nodes (listeners) are available.
+# Hub and nodes can accept connections from client.
+# Node 1 is the failover of node 2 and vice versa.
+version: '3.1'
+services:
+    router-hub-1:
+        image: base-router
+        build: ../../qpid/qpid-dispatch
+        hostname: router-hub-1
+        ports:
+            - 5672:5672
+        volumes:
+            - ${PWD}/hub.conf:/etc/qpid-dispatch/qdrouterd.conf
+    router-node-1:
+        image: base-router
+        hostname: router-node-1
+        ports:
+            - 5673:5672
+        volumes:
+            - ${PWD}/node1.conf:/etc/qpid-dispatch/qdrouterd.conf
+    router-node-2:
+        image: base-router
+        hostname: router-node-2
+        ports:
+            - 5674:5672
+        volumes:
+            - ${PWD}/node2.conf:/etc/qpid-dispatch/qdrouterd.conf
